@@ -423,9 +423,62 @@
         }
         
         @media (max-width: 767px) {
-            main {
-                transform: scale(0.5);
+            /* Habilitar scroll en móvil */
+            body {
+                overflow-y: auto !important;
+                height: auto !important;
+                min-height: 100vh;
             }
+            
+            /* Ocultar layout de galaxia en móvil */
+            main {
+                display: none !important;
+            }
+            
+            /* Mostrar layout alternativo de columna */
+            .mobile-layout {
+                display: block !important;
+            }
+            
+            /* Header optimizado */
+            header {
+                position: relative;
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            header p {
+                font-size: 0.6rem !important;
+                letter-spacing: 0.15em;
+                line-height: 1.5;
+            }
+            
+            /* Footer estático al final */
+            footer {
+                position: static !important;
+                padding: 2rem 1.5rem !important;
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+            
+            footer .text-right {
+                text-align: left;
+            }
+            
+            /* Ocultar leyenda en móvil */
+            footer .flex.items-center.gap-6 {
+                display: none;
+            }
+        }
+        
+        /* Layout mobile oculto por defecto */
+        .mobile-layout {
+            display: none;
         }
     </style>
 </head>
@@ -435,6 +488,8 @@
     
     <header class="relative z-[70] pt-10 px-12 text-center pointer-events-none">
         <h1 class="font-display italic text-5xl text-slate-50 tracking-tight mb-3">El Cosmos del Data Analyst</h1>
+        <div class="hidden md:hidden"></div>
+        <div class="md:hidden w-32 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mb-3"></div>
         <p class="text-[10px] text-slate-400 font-sans tracking-[0.2em] uppercase max-w-xl mx-auto leading-relaxed">
             La evolución secuencial de la maestría analítica mapeada a través de coordenadas celestes
         </p>
@@ -599,8 +654,224 @@
         </a>
     </main>
     
+    <!-- Mobile Layout (columna scrolleable) -->
+    <div class="mobile-layout px-6 py-8 space-y-6">
+        <!-- DA Core -->
+        <a href="https://github.com/Anais-RV/da-core" target="_blank" rel="noopener" class="flex items-center gap-4 py-5 border-t border-b border-primary/30 hover:border-primary/50 transition-all duration-300">
+            <div class="w-14 h-14 rounded-full border-2 border-primary/50 bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center flex-shrink-0 relative">
+                <div class="w-2.5 h-2.5 rounded-full bg-primary shadow-lg shadow-primary/50"></div>
+            </div>
+            <div>
+                <h3 class="font-display italic text-xl text-primary">DA Core</h3>
+                <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Repositorio Central</p>
+            </div>
+        </a>
+        
+        <!-- Satélites en orden -->
+        <a href="https://github.com/Anais-RV/da-sat-00-launchpad-fundamentos" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-launchpad">
+            <div class="w-12 h-12 rounded-full border border-orange-400/30 bg-orange-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 30 12 A 18 18 0 0 1 46.5 22.5" stroke="rgba(251, 146, 60, 1)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-orange-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">0</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Launchpad</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Fundamentos</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-01-atlas-exploracion-datos" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-atlas">
+            <div class="w-12 h-12 rounded-full border border-red-400/30 bg-red-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 15 30 L 24 30 M 30 30 L 39 30 M 45 30 L 54 30" stroke="rgba(248, 113, 113, 1)" stroke-width="1.5" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">I</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Atlas</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Exploración</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-02-kepler-limpieza-datos" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-kepler">
+            <div class="w-12 h-12 rounded-full border border-teal-400/30 bg-teal-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <circle cx="42" cy="24" r="3.5" fill="rgba(45, 212, 191, 1)" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-teal-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">II</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Kepler</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Limpieza de Datos</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-03-galileo-visualizacion" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-galileo">
+            <div class="w-12 h-12 rounded-full border border-indigo-400/30 bg-indigo-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="21" stroke="rgba(129, 140, 248, 1)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-indigo-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">III</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Galileo</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Visualización</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-04-newton-estadistica" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-newton">
+            <div class="w-12 h-12 rounded-full border border-amber-400/30 bg-amber-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 12 30 A 18 18 0 0 1 30 12" stroke="rgba(251, 191, 36, 1)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-amber-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">IV</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Newton</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Estadística</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-05-curie-eda" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-curie">
+            <div class="w-12 h-12 rounded-full border border-pink-400/30 bg-pink-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 30 10.5 Q 42 18 46.5 30 T 39 48 Q 27 51 18 42 T 13.5 21 Q 19.5 12 30 10.5" stroke="rgba(244, 114, 182, 0.9)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-pink-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">V</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Curie</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">EDA Avanzado</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-06-faraday-reporting" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-faraday">
+            <div class="w-12 h-12 rounded-full border border-cyan-400/30 bg-cyan-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 18 21 A 15 15 0 0 1 30 12" stroke="rgba(34, 211, 238, 1)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-cyan-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">VI</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Faraday</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Reporting</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-07-darwin-clustering" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-darwin">
+            <div class="w-12 h-12 rounded-full border border-emerald-400/30 bg-emerald-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <circle cx="21" cy="30" r="3" fill="rgba(52, 211, 153, 1)" />
+                    <circle cx="39" cy="30" r="3" fill="rgba(52, 211, 153, 1)" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">VII</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Darwin</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Clustering</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-08-turing-clasificacion" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-turing">
+            <div class="w-12 h-12 rounded-full border border-purple-400/30 bg-purple-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <circle cx="24" cy="24" r="2.5" fill="rgba(192, 132, 252, 1)" />
+                    <circle cx="36" cy="36" r="2.5" fill="rgba(192, 132, 252, 1)" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-purple-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">VIII</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Turing</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Clasificación</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-09-pasteur-pipelines" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-pasteur">
+            <div class="w-12 h-12 rounded-full border border-lime-400/30 bg-lime-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 15 27 L 45 27 M 18 33 L 48 33" stroke="rgba(163, 230, 53, 1)" stroke-width="1.5" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-lime-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">IX</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Pasteur</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Pipelines ML</p>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-10-halley-series-temporales" target="_blank" rel="noopener" class="flex items-center gap-3 py-3 hover:opacity-70 transition-opacity duration-300 group sat-halley">
+            <div class="w-12 h-12 rounded-full border border-rose-400/30 bg-rose-400/10 flex items-center justify-center flex-shrink-0 relative">
+                <svg class="absolute inset-0 w-12 h-12 micro-detail" viewBox="0 0 60 60">
+                    <path d="M 12 30 Q 21 24 30 27 T 48 33" stroke="rgba(251, 113, 160, 1)" stroke-width="1.5" fill="none" />
+                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-rose-400 relative z-10"></div>
+            </div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">X</span>
+                <span class="text-slate-600">·</span>
+                <h4 class="font-display italic text-base text-slate-100">Halley</h4>
+                <span class="text-slate-600">·</span>
+                <p class="text-xs text-slate-400">Series Temporales</p>
+            </div>
+        </a>
+        
+        <!-- Footer mobile -->
+        <div class="mt-12 pt-8 border-t border-slate-700/30 space-y-6">
+            <div class="space-y-3">
+                <p class="font-display italic text-lg text-primary">Del dato al criterio.</p>
+                <p class="text-sm text-slate-300">De la técnica al razonamiento analítico aplicado.</p>
+            </div>
+            
+            <div class="space-y-1">
+                <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Diseño Curricular · Anaïs Rodríguez Villanueva</p>
+                <div class="flex items-center gap-1.5">
+                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Edición I</p>
+                    <span class="text-slate-600">·</span>
+                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">2026</p>
+                </div>
+            </div>
+            
+            <h1 class="font-display italic text-3xl text-primary">Data Analyst Bootcamp</h1>
+            
+            <a href="https://github.com/Anais-RV/DATA-ANALYST" target="_blank" rel="noopener" class="inline-block text-xs text-slate-400 hover:text-primary/80 transition-colors uppercase tracking-wider">
+                Ver repositorio →
+            </a>
+        </div>
+    </div>
+    
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 p-12 flex justify-between items-end pointer-events-none">
+    <footer class="hidden md:flex fixed bottom-0 left-0 right-0 p-12 justify-between items-end pointer-events-none">
         <div class="max-w-md space-y-4 pointer-events-auto">
             <div class="space-y-2">
                 <p class="text-base font-display italic text-primary/90 leading-relaxed" style="text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3); filter: brightness(1.1);">
