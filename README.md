@@ -21,7 +21,7 @@ Visualización interactiva del roadmap curricular del Data Analyst Bootcamp.
 
 ---
 
-## 💻 Desarrollo local
+##  Desarrollo local
 
 ```bash
 python -m http.server 8000
