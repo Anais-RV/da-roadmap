@@ -225,20 +225,20 @@
             z-index: 1;
         }
         
-        /* Estrellas pequeñas lejanas */
+        /* Estrellas pequeñas lejanas - variación de temperatura estelar */
         .stardust-overlay::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image: 
-                radial-gradient(0.5px 0.5px at 8% 12%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 22% 38%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 48% 55%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 82% 25%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 65% 72%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 34% 88%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 91% 63%, #fff 100%, transparent),
-                radial-gradient(0.5px 0.5px at 15% 45%, rgba(212, 175, 55, 0.6) 100%, transparent);
+                radial-gradient(0.5px 0.5px at 8% 12%, rgba(200, 220, 255, 0.9) 100%, transparent),  /* Azul-blanco caliente */
+                radial-gradient(0.5px 0.5px at 22% 38%, #fff 100%, transparent),  /* Blanco puro */
+                radial-gradient(0.5px 0.5px at 48% 55%, rgba(255, 248, 240, 0.95) 100%, transparent),  /* Blanco cálido */
+                radial-gradient(0.5px 0.5px at 82% 25%, rgba(180, 210, 255, 0.85) 100%, transparent),  /* Azul tenue */
+                radial-gradient(0.5px 0.5px at 65% 72%, #fff 100%, transparent),  /* Blanco */
+                radial-gradient(0.5px 0.5px at 34% 88%, rgba(255, 240, 220, 0.9) 100%, transparent),  /* Amarillo-blanco */
+                radial-gradient(0.5px 0.5px at 91% 63%, rgba(220, 235, 255, 0.8) 100%, transparent),  /* Azul pálido */
+                radial-gradient(0.5px 0.5px at 15% 45%, rgba(255, 220, 180, 0.7) 100%, transparent);  /* Naranja tenue */
             background-size: 300px 300px, 350px 350px, 280px 280px, 320px 320px, 290px 290px, 310px 310px, 330px 330px, 340px 340px;
             background-position: 0 0, 50px 50px, 100px 20px, 30px 80px, 120px 60px, 70px 110px, 150px 40px, 20px 90px;
             opacity: 0.4;
@@ -246,19 +246,19 @@
             animation-delay: 0s;
         }
         
-        /* Estrellas medianas intermedias */
+        /* Estrellas medianas intermedias - espectro de temperaturas */
         .stardust-overlay::after {
             content: '';
             position: absolute;
             inset: 0;
             background-image: 
-                radial-gradient(1px 1px at 18% 15%, #fff 100%, transparent),
-                radial-gradient(1px 1px at 45% 42%, #fff 100%, transparent),
-                radial-gradient(1px 1px at 72% 58%, #fff 100%, transparent),
-                radial-gradient(1px 1px at 35% 78%, #fff 100%, transparent),
-                radial-gradient(1px 1px at 88% 32%, rgba(212, 175, 55, 0.7) 100%, transparent),
-                radial-gradient(1px 1px at 58% 88%, #fff 100%, transparent),
-                radial-gradient(1px 1px at 12% 65%, rgba(200, 220, 255, 0.8) 100%, transparent);
+                radial-gradient(1px 1px at 18% 15%, #fff 100%, transparent),  /* Blanco brillante */
+                radial-gradient(1px 1px at 45% 42%, rgba(255, 245, 235, 0.95) 100%, transparent),  /* Blanco cálido */
+                radial-gradient(1px 1px at 72% 58%, rgba(190, 215, 255, 0.9) 100%, transparent),  /* Azul-blanco */
+                radial-gradient(1px 1px at 35% 78%, rgba(255, 250, 245, 0.95) 100%, transparent),  /* Blanco muy claro */
+                radial-gradient(1px 1px at 88% 32%, rgba(255, 235, 200, 0.85) 100%, transparent),  /* Amarillo pálido */
+                radial-gradient(1px 1px at 58% 88%, rgba(200, 220, 255, 0.9) 100%, transparent),  /* Azul claro */
+                radial-gradient(1px 1px at 12% 65%, rgba(255, 210, 170, 0.75) 100%, transparent);  /* Naranja suave */
             background-size: 450px 450px, 420px 420px, 480px 480px, 410px 410px, 440px 440px, 460px 460px, 430px 430px;
             background-position: 0 0, 80px 30px, 40px 90px, 110px 50px, 60px 120px, 100px 70px, 130px 100px;
             opacity: 0.5;
@@ -266,17 +266,17 @@
             animation-delay: 1.5s;
         }
         
-        /* Capa adicional con estrellas grandes cercanas y brillantes */
+        /* Estrellas grandes cercanas - espectro completo de clases estelares */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background-image: 
-                radial-gradient(1.5px 1.5px at 28% 22%, #fff 100%, transparent),
-                radial-gradient(2px 2px at 68% 48%, rgba(212, 175, 55, 0.9) 100%, transparent),
-                radial-gradient(1.5px 1.5px at 85% 68%, rgba(200, 220, 255, 0.9) 100%, transparent),
-                radial-gradient(2px 2px at 42% 82%, #fff 100%, transparent),
-                radial-gradient(1.5px 1.5px at 15% 55%, rgba(212, 175, 55, 0.8) 100%, transparent);
+                radial-gradient(1.5px 1.5px at 28% 22%, #fff 100%, transparent),  /* Blanco intenso (tipo A) */
+                radial-gradient(2px 2px at 68% 48%, rgba(255, 240, 210, 0.95) 100%, transparent),  /* Amarillo-blanco (tipo F/G) */
+                radial-gradient(1.5px 1.5px at 85% 68%, rgba(180, 210, 255, 0.95) 100%, transparent),  /* Azul-blanco (tipo B) */
+                radial-gradient(2px 2px at 42% 82%, rgba(255, 220, 190, 0.9) 100%, transparent),  /* Naranja (tipo K) */
+                radial-gradient(1.5px 1.5px at 15% 55%, rgba(255, 200, 160, 0.85) 100%, transparent);  /* Naranja intenso */
             background-size: 600px 600px, 550px 550px, 580px 580px, 620px 620px, 590px 590px;
             background-position: 0 0, 70px 60px, 130px 20px, 40px 100px, 110px 80px;
             opacity: 0.6;

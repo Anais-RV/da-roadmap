@@ -1,103 +1,50 @@
-# 🌌 Data Analyst Roadmap - Galaxy Visualization
+# 🌌 El Cosmos del Data Analyst
 
-Visualización interactiva tipo galaxia del itinerario de aprendizaje del bootcamp Data Analyst.
+Visualización interactiva del roadmap curricular del Data Analyst Bootcamp.
 
----
-
-## 📋 Descripción
-
-Este sitio web estático presenta el roadmap del bootcamp Data Analyst como una galaxia visual:
-- **Planeta central (DA Core):** Repositorio con la visión, cronograma y estructura pedagógica
-- **Satélites orbitando:** Módulos de contenido independientes pero conectados
-- **Fondo de estrellas animadas:** Ambiente espacial inmersivo
-- **Efectos de nebulosa:** Atmósfera visual sutil
-- **Interactividad:** Parallax, hover, navegación por teclado
-
-**Características técnicas:**
-- HTML + CSS + Vanilla JS (sin frameworks)
-- Completamente responsive
-- Accesible (ARIA labels, navegación por teclado, soporte reduced-motion)
-- Optimizado para rendimiento
-- Canvas para starfield
-- SVG para visualización de galaxia
+**Del dato al criterio. De la técnica al razonamiento analítico aplicado.**
 
 ---
 
-## 🚀 Cómo ejecutar localmente
+## 🚀 Ver el roadmap
 
-### Opción 1: Servidor local simple
+**[→ https://anais-rv.github.io/da-roadmap/](https://anais-rv.github.io/da-roadmap/)**
+
+---
+
+## 🏗️ Estructura
+
+- **DA Core**: Repositorio central con visión pedagógica, cronograma y evaluación
+- **11 Satélites**: Módulos temáticos especializados (Launchpad → Halley)
+- **Estrellas realistas**: Campo estelar con variación de temperatura
+- **Animaciones astronómicas**: Breathing effects, órbitas, meteoros
+
+---
+
+## 💻 Desarrollo local
 
 ```bash
-# Con Python 3
 python -m http.server 8000
-
-# Con Node.js (si tienes http-server instalado)
-npx http-server -p 8000
-
-# Con PHP
-php -S localhost:8000
+# http://localhost:8000
 ```
-
-Luego abre: `http://localhost:8000`
-
-### Opción 2: Live Server en VS Code
-
-1. Instala la extensión "Live Server"
-2. Click derecho en `index.html` → "Open with Live Server"
 
 ---
 
-## 🌐 Deploy en GitHub Pages
+## 📦 Tecnología
 
-### Setup inicial
-
-1. **Crea el repositorio:**
-   ```bash
-   cd da-roadmap
-   git init
-   git add .
-   git commit -m "Initial commit: Galaxy roadmap"
-   git branch -M main
-   git remote add origin https://github.com/TU-ORG/da-roadmap.git
-   git push -u origin main
-   ```
-
-2. **Activa GitHub Pages:**
-   - Ve a Settings → Pages
-   - Source: Deploy from branch `main`
-   - Folder: `/ (root)`
-   - Save
-
-3. **Espera unos minutos** y tu sitio estará en:
-   ```
-   https://TU-ORG.github.io/da-roadmap/
-   ```
-
-### Actualizar contenido
-
-```bash
-# Edita modules.json o cualquier archivo
-git add .
-git commit -m "Update roadmap data"
-git push
-```
-
-GitHub Pages se actualiza automáticamente en 1-2 minutos.
+- Tailwind CSS (inline config)
+- HTML5 Canvas (shooting stars)
+- SVG (micro-detalles orbitales)
+- Vanilla JavaScript
+- Totalmente responsive
 
 ---
 
-## 📝 Editar módulos
+## 👩‍💻 Autoría
 
-### Archivo principal: `data/modules.json`
+**Anaïs Rodreíguez Villanueva** · [LinkedIn](https://www.linkedin.com/in/anaisvillanueva/)
 
-```json
-{
-  "core": {
-    "id": "da-core",
-    "label": "DA Core",
-    "subtitle": "Repositorio Central",
-    "url": "https://github.com/ORG/da-core",
-    "description": "Descripción opcional"
+Edición I · 2026
   },
   "satellites": [
     {
