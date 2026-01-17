@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cosmos del Data Analyst - Roadmap Curricular</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mapa curricular del Data Analyst Bootcamp: 11 satélites temáticos orbitando DA Core. Del dato al criterio, de la técnica al razonamiento analítico aplicado.">
+    <meta name="keywords" content="data analyst, bootcamp, roadmap, python, sql, estadística, machine learning, visualización, EDA">
+    <meta name="author" content="Anaïs Rodreíguez Villanueva">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anais-rv.github.io/da-roadmap/">
+    <meta property="og:title" content="El Cosmos del Data Analyst - Roadmap Curricular">
+    <meta property="og:description" content="Del dato al criterio. De la técnica al razonamiento analítico aplicado. Visualización interactiva del itinerario formativo completo.">
+    <meta property="og:site_name" content="Data Analyst Bootcamp">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anais-rv.github.io/da-roadmap/">
+    <meta property="twitter:title" content="El Cosmos del Data Analyst - Roadmap Curricular">
+    <meta property="twitter:description" content="Del dato al criterio. De la técnica al razonamiento analítico aplicado.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D4AF37",
+                        "space-black": "#03011a",
+                        "space-navy": "#020617",
+                    },
+                    fontFamily: {
+                        display: ["'Playfair Display'", "serif"],
+                        sans: ["'Inter'", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-space-black text-slate-300 antialiased overflow-hidden;
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes twinkle-slow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes twinkle-fast {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        /* ═══════════════════════════════════════════════
+           MICRO-DETAIL ANIMATIONS (Visible for testing)
+           ═══════════════════════════════════════════════ */
+        
+        /* Launchpad: breathing */
+        @keyframes micro-breathe-launchpad {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Atlas: breathing + drift */
+        @keyframes micro-breathe-atlas {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) translateX(0px); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) translateX(3px); }
+        }
+        
+        /* Kepler: breathing */
+        @keyframes micro-breathe-kepler {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Galileo: breathing + glow */
+        @keyframes micro-breathe-galileo {
+            0%, 100% { opacity: 0.5; filter: brightness(1); }
+            50% { opacity: 0.9; filter: brightness(1.3); }
+        }
+        
+        /* Newton: breathing */
+        @keyframes micro-breathe-newton {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Curie: breathing + scale */
+        @keyframes micro-breathe-curie {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.05); }
+        }
+        
+        /* Faraday: breathing */
+        @keyframes micro-breathe-faraday {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Darwin: breathing */
+        @keyframes micro-breathe-darwin {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Turing: breathing + drift */
+        @keyframes micro-breathe-turing {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) translateY(0px); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) translateY(3px); }
+        }
+        
+        /* Pasteur: breathing + flow */
+        @keyframes micro-breathe-pasteur {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) translateX(-2px); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) translateX(2px); }
+        }
+        
+        /* Halley: breathing + wave */
+        @keyframes micro-breathe-halley {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) translateX(0px) translateY(0px); }
+            25% { transform: translate(-50%, -50%) translateX(2px) translateY(1px); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) translateX(3px) translateY(2px); }
+            75% { transform: translate(-50%, -50%) translateX(2px) translateY(1px); }
+        }
+        
+        /* DA Core breathing glow */
+        @keyframes da-core-breathe {
+            0%, 100% {
+                box-shadow: 
+                    inset 0 0 50px rgba(212, 175, 55, 0.08),
+                    0 0 80px rgba(0, 0, 0, 0.9),
+                    0 0 40px rgba(212, 175, 55, 0.15);
+            }
+            50% {
+                box-shadow: 
+                    inset 0 0 60px rgba(212, 175, 55, 0.12),
+                    0 0 80px rgba(0, 0, 0, 0.9),
+                    0 0 60px rgba(212, 175, 55, 0.25);
+            }
+        }
+        
+        @keyframes da-core-inner-pulse {
+            0%, 100% {
+                background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 75%);
+            }
+            50% {
+                background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 75%);
+            }
+        }
+        
+        /* DA Core orbital particles */
+        @keyframes da-core-orbit-1 {
+            from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        
+        @keyframes da-core-orbit-2 {
+            from { transform: rotate(120deg) translateX(100px) rotate(-120deg); }
+            to { transform: rotate(480deg) translateX(100px) rotate(-480deg); }
+        }
+        
+        @keyframes da-core-orbit-3 {
+            from { transform: rotate(240deg) translateX(100px) rotate(-240deg); }
+            to { transform: rotate(600deg) translateX(100px) rotate(-600deg); }
+        }
+        
+        /* Subtle outer ring rotation */
+        @keyframes da-core-ring-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .da-core-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.9) 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 8px 2px rgba(212, 175, 55, 0.4);
+        }
+        
+        .da-core-particle:nth-child(1) {
+            animation: da-core-orbit-1 20s linear infinite;
+        }
+        
+        .da-core-particle:nth-child(2) {
+            animation: da-core-orbit-2 20s linear infinite;
+        }
+        
+        .da-core-particle:nth-child(3) {
+            animation: da-core-orbit-3 20s linear infinite;
+        }
+        
+        #shooting-star-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .stardust-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Estrellas pequeñas lejanas */
+        .stardust-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(0.5px 0.5px at 8% 12%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 22% 38%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 48% 55%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 82% 25%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 65% 72%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 34% 88%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 91% 63%, #fff 100%, transparent),
+                radial-gradient(0.5px 0.5px at 15% 45%, rgba(212, 175, 55, 0.6) 100%, transparent);
+            background-size: 300px 300px, 350px 350px, 280px 280px, 320px 320px, 290px 290px, 310px 310px, 330px 330px, 340px 340px;
+            background-position: 0 0, 50px 50px, 100px 20px, 30px 80px, 120px 60px, 70px 110px, 150px 40px, 20px 90px;
+            opacity: 0.4;
+            animation: twinkle-slow 8s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+        
+        /* Estrellas medianas intermedias */
+        .stardust-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 18% 15%, #fff 100%, transparent),
+                radial-gradient(1px 1px at 45% 42%, #fff 100%, transparent),
+                radial-gradient(1px 1px at 72% 58%, #fff 100%, transparent),
+                radial-gradient(1px 1px at 35% 78%, #fff 100%, transparent),
+                radial-gradient(1px 1px at 88% 32%, rgba(212, 175, 55, 0.7) 100%, transparent),
+                radial-gradient(1px 1px at 58% 88%, #fff 100%, transparent),
+                radial-gradient(1px 1px at 12% 65%, rgba(200, 220, 255, 0.8) 100%, transparent);
+            background-size: 450px 450px, 420px 420px, 480px 480px, 410px 410px, 440px 440px, 460px 460px, 430px 430px;
+            background-position: 0 0, 80px 30px, 40px 90px, 110px 50px, 60px 120px, 100px 70px, 130px 100px;
+            opacity: 0.5;
+            animation: twinkle 5s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+        
+        /* Capa adicional con estrellas grandes cercanas y brillantes */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 28% 22%, #fff 100%, transparent),
+                radial-gradient(2px 2px at 68% 48%, rgba(212, 175, 55, 0.9) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 85% 68%, rgba(200, 220, 255, 0.9) 100%, transparent),
+                radial-gradient(2px 2px at 42% 82%, #fff 100%, transparent),
+                radial-gradient(1.5px 1.5px at 15% 55%, rgba(212, 175, 55, 0.8) 100%, transparent);
+            background-size: 600px 600px, 550px 550px, 580px 580px, 620px 620px, 590px 590px;
+            background-position: 0 0, 70px 60px, 130px 20px, 40px 100px, 110px 80px;
+            opacity: 0.6;
+            animation: twinkle-fast 3s ease-in-out infinite;
+            animation-delay: 0.7s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .orbital-ring {
+            @apply absolute rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none;
+            border: 0.5px solid rgba(212, 175, 55, 0.08);
+            transition: all 0.5s ease;
+        }
+        .satellite-node {
+            @apply absolute top-1/2 left-1/2 flex flex-col items-center justify-center cursor-pointer;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 100;
+        }
+        .planet-core {
+            @apply w-12 h-12 rounded-full border border-white/10 backdrop-blur-md bg-white/[0.03] flex items-center justify-center relative;
+            transition: all 0.4s ease;
+        }
+        .satellite-node:hover .planet-core {
+            @apply border-primary/40 bg-white/[0.08];
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+        .satellite-node:hover .module-name {
+            @apply border-b-primary/80 text-white;
+        }
+        .label-container {
+            @apply absolute top-14 whitespace-nowrap text-center;
+        }
+        .module-name {
+            @apply font-display italic text-base text-slate-100 border-b border-transparent transition-all duration-300 pb-0.5;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .module-subtitle {
+            @apply block font-sans text-[10px] uppercase tracking-[0.25em] text-slate-300 mt-1 font-semibold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .da-hub {
+            @apply relative z-50 w-52 h-52 rounded-full border border-primary/30 bg-space-black flex items-center justify-center;
+            box-shadow: 
+                inset 0 0 50px rgba(212, 175, 55, 0.08),
+                0 0 80px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(212, 175, 55, 0.15);
+            animation: da-core-breathe 8s ease-in-out infinite;
+        }
+        .da-hub-inner {
+            @apply w-44 h-44 rounded-full border border-primary/15 flex flex-col items-center justify-center text-center;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 75%);
+            animation: da-core-inner-pulse 8s ease-in-out infinite;
+        }
+        .da-hub-inner span:first-child {
+            text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        .da-hub-inner span:last-child {
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        .constellation-svg {
+            @apply absolute inset-0 pointer-events-none;
+            z-index: 10;
+        }
+        .constellation-path {
+            stroke: rgba(212, 175, 55, 0.08);
+            stroke-width: 0.75;
+            stroke-dasharray: 4 4;
+            fill: none;
+        }
+        
+        /* Micro-identity orbital details */
+        .micro-detail {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0.7;
+            transition: opacity 0.4s ease, filter 0.4s ease;
+            z-index: 5;
+        }
+        
+        .satellite-node:hover .micro-detail {
+            opacity: 0.85;
+            filter: brightness(1.1);
+        }
+        
+        /* Apply individual animations to each satellite's micro-detail */
+        .sat-launchpad .micro-detail { animation: micro-breathe-launchpad 4s ease-in-out infinite; }
+        .sat-atlas .micro-detail { animation: micro-breathe-atlas 4s ease-in-out infinite; }
+        .sat-kepler .micro-detail { animation: micro-breathe-kepler 4s ease-in-out infinite; }
+        .sat-galileo .micro-detail { animation: micro-breathe-galileo 4s ease-in-out infinite; }
+        .sat-newton .micro-detail { animation: micro-breathe-newton 4s ease-in-out infinite; }
+        .sat-curie .micro-detail { animation: micro-breathe-curie 4s ease-in-out infinite; }
+        .sat-faraday .micro-detail { animation: micro-breathe-faraday 4s ease-in-out infinite; }
+        .sat-darwin .micro-detail { animation: micro-breathe-darwin 4s ease-in-out infinite; }
+        .sat-turing .micro-detail { animation: micro-breathe-turing 4s ease-in-out infinite; }
+        .sat-pasteur .micro-detail { animation: micro-breathe-pasteur 4s ease-in-out infinite; }
+        .sat-halley .micro-detail { animation: micro-breathe-halley 4s ease-in-out infinite; }
+        
+        /* Editorial Roman numerals */
+        .roman-numeral {
+            @apply font-sans text-[10px] tracking-[0.2em] uppercase font-semibold;
+            color: rgba(148, 163, 184, 0.7);
+            margin-right: 0.4em;
+            transition: color 0.4s ease;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .satellite-node:hover .roman-numeral {
+            color: rgba(148, 163, 184, 0.95);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .micro-detail,
+            .roman-numeral {
+                transition: none;
+            }
+            .micro-detail {
+                animation: none !important;
+            }
+        }
+        
+        /* Responsive adjustments for laptop screens */
+        @media (min-width: 1024px) and (max-width: 1600px) {
+            main {
+                transform: scale(0.75);
+            }
+            header h1 {
+                font-size: 3rem;
+            }
+            header p {
+                font-size: 9px;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+            main {
+                transform: scale(0.6);
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            main {
+                transform: scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+    <div class="stardust-overlay"></div>
+    <canvas id="shooting-star-canvas"></canvas>
+    
+    <header class="relative z-[70] pt-10 px-12 text-center pointer-events-none">
+        <h1 class="font-display italic text-5xl text-slate-50 tracking-tight mb-3">El Cosmos del Data Analyst</h1>
+        <p class="text-[10px] text-slate-400 font-sans tracking-[0.2em] uppercase max-w-xl mx-auto leading-relaxed">
+            La evolución secuencial de la maestría analítica mapeada a través de coordenadas celestes
+        </p>
+    </header>
+    
+    <main class="relative w-full h-[70vh] flex items-center justify-center">
+        <!-- DA Core Hub -->
+        <a href="https://github.com/Anais-RV/da-core" target="_blank" rel="noopener" class="da-hub hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div class="da-core-particle"></div>
+            <div class="da-core-particle"></div>
+            <div class="da-core-particle"></div>
+            <div class="da-hub-inner">
+                <span class="font-display italic text-3xl text-primary tracking-wide" style="filter: brightness(1.4);">DA Core</span>
+                <div class="w-8 h-px bg-primary/40 my-4"></div>
+                <span class="text-[9px] uppercase tracking-[0.4em] font-bold text-slate-100">Repositorio Central</span>
+            </div>
+        </a>
+        
+        <!-- Constellation Paths -->
+        <svg class="constellation-svg w-full h-full" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 1000">
+            <path class="constellation-path" d="M 500,260 L 728,426 L 641,694 L 359,694 L 272,426 Z"></path>
+        </svg>
+        
+        <!-- Orbital Rings -->
+        <div class="orbital-ring w-[480px] h-[480px]"></div>
+        <div class="orbital-ring w-[780px] h-[780px]"></div>
+        
+        <!-- Inner Ring Satellites -->
+        <a href="https://github.com/Anais-RV/da-sat-00-launchpad-fundamentos" target="_blank" rel="noopener" class="satellite-node sat-launchpad hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(0deg) translateY(-240px) rotate(0deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Incomplete arc: starting point -->
+                <path d="M 30 12 A 18 18 0 0 1 46.5 22.5" stroke="rgba(251, 146, 60, 1)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-orange-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">0</span>Launchpad</span>
+                <span class="module-subtitle">Fundamentos</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-01-atlas-exploracion-datos" target="_blank" rel="noopener" class="satellite-node sat-atlas hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(65deg) translateY(-240px) rotate(-65deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Broken orbit line: exploration, discovery -->
+                <path d="M 15 30 L 24 30 M 30 30 L 39 30 M 45 30 L 54 30" stroke="rgba(248, 113, 113, 1)" stroke-width="1.5" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-red-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">I</span>Atlas</span>
+                <span class="module-subtitle">Exploración</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-02-kepler-limpieza-datos" target="_blank" rel="noopener" class="satellite-node sat-kepler hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(130deg) translateY(-240px) rotate(-130deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Micro-moon: filtering, separation -->
+                <circle cx="42" cy="24" r="3.5" fill="rgba(45, 212, 191, 1)" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-teal-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">II</span>Kepler</span>
+                <span class="module-subtitle">Limpieza de Datos</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-03-galileo-visualizacion" target="_blank" rel="noopener" class="satellite-node sat-galileo hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(195deg) translateY(-240px) rotate(-195deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Secondary halo: visualization, perspective -->
+                <circle cx="30" cy="30" r="21" stroke="rgba(129, 140, 248, 1)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">III</span>Galileo</span>
+                <span class="module-subtitle">Visualización</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-04-newton-estadistica" target="_blank" rel="noopener" class="satellite-node sat-newton hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(260deg) translateY(-240px) rotate(-260deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Perfect regular arc: statistics, order -->
+                <path d="M 12 30 A 18 18 0 0 1 30 12" stroke="rgba(251, 191, 36, 1)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">IV</span>Newton</span>
+                <span class="module-subtitle">Estadística</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-05-curie-eda" target="_blank" rel="noopener" class="satellite-node sat-curie hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(315deg) translateY(-240px) rotate(-315deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Organic irregular halo: advanced analysis -->
+                <path d="M 30 10.5 Q 42 18 46.5 30 T 39 48 Q 27 51 18 42 T 13.5 21 Q 19.5 12 30 10.5" stroke="rgba(244, 114, 182, 0.9)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">V</span>Curie</span>
+                <span class="module-subtitle">EDA Avanzado</span>
+            </div>
+        </a>
+        
+        <!-- Outer Ring Satellites -->
+        <a href="https://github.com/Anais-RV/da-sat-06-faraday-reporting" target="_blank" rel="noopener" class="satellite-node sat-faraday hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(42deg) translateY(-390px) rotate(-42deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Segmented arc: reporting structure -->
+                <path d="M 18 21 A 15 15 0 0 1 30 12" stroke="rgba(34, 211, 238, 1)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">VI</span>Faraday</span>
+                <span class="module-subtitle">Reporting</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-07-darwin-clustering" target="_blank" rel="noopener" class="satellite-node sat-darwin hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(102deg) translateY(-390px) rotate(-102deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Symmetric dots: clustering, grouping -->
+                <circle cx="21" cy="30" r="3" fill="rgba(52, 211, 153, 1)" />
+                <circle cx="39" cy="30" r="3" fill="rgba(52, 211, 153, 1)" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">VII</span>Darwin</span>
+                <span class="module-subtitle">Clustering</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-08-turing-clasificacion" target="_blank" rel="noopener" class="satellite-node sat-turing hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(212deg) translateY(-398px) rotate(-212deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Paired micro-dots: classification, binary -->
+                <circle cx="24" cy="24" r="2.5" fill="rgba(192, 132, 252, 1)" />
+                <circle cx="36" cy="36" r="2.5" fill="rgba(192, 132, 252, 1)" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">VIII</span>Turing</span>
+                <span class="module-subtitle">Clasificación</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-09-pasteur-pipelines" target="_blank" rel="noopener" class="satellite-node sat-pasteur hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(246deg) translateY(-390px) rotate(-246deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Offset orbit line: pipelines, flow -->
+                <path d="M 15 27 L 45 27 M 18 33 L 48 33" stroke="rgba(163, 230, 53, 1)" stroke-width="1.5" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-lime-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">IX</span>Pasteur</span>
+                <span class="module-subtitle">Pipelines ML</span>
+            </div>
+        </a>
+        
+        <a href="https://github.com/Anais-RV/da-sat-10-halley-series-temporales" target="_blank" rel="noopener" class="satellite-node sat-halley hover:scale-110 transition-transform duration-300 cursor-pointer" style="transform: translate(-50%, -50%) rotate(310deg) translateY(-390px) rotate(-310deg);">
+            <svg class="micro-detail" width="60" height="60" viewBox="0 0 60 60">
+                <!-- Irregular arc: time series, periodic but variable -->
+                <path d="M 12 30 Q 21 24 30 27 T 48 33" stroke="rgba(251, 113, 160, 1)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="planet-core"><div class="w-1.5 h-1.5 rounded-full bg-rose-400"></div></div>
+            <div class="label-container">
+                <span class="module-name"><span class="roman-numeral">X</span>Halley</span>
+                <span class="module-subtitle">Series Temporales</span>
+            </div>
+        </a>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 p-12 flex justify-between items-end pointer-events-none">
+        <div class="max-w-md space-y-4 pointer-events-auto">
+            <div class="space-y-2">
+                <p class="text-base font-display italic text-primary/90 leading-relaxed" style="text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3); filter: brightness(1.1);">
+                    Del dato al criterio.
+                </p>
+                <p class="text-sm leading-relaxed text-slate-300 font-light" style="text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                    De la técnica al razonamiento analítico aplicado.
+                </p>
+            </div>
+            <!-- Legend -->
+            <div class="flex items-center gap-6 pt-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-1 rounded-full bg-orange-400"></div>
+                    <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-slate-300">Fundamentos</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-1 rounded-full bg-indigo-400"></div>
+                    <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-slate-300">Análisis</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-1 rounded-full bg-emerald-400"></div>
+                    <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-slate-300">Ingeniería</span>
+                </div>
+            </div>
+            <!-- Author -->
+            <div class="pt-3 border-t border-slate-700/30">
+                <p class="text-[8px] tracking-[0.3em] uppercase text-slate-500 font-medium" style="text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                    Diseño curricular · <a href="https://www.linkedin.com/in/anaisvillanueva/" target="_blank" rel="noopener" class="text-slate-400 hover:text-primary/80 transition-colors">Anaïs Rodreíguez Villanueva</a>
+                </p>
+            </div>
+        </div>
+        <div class="text-right pointer-events-auto space-y-2">
+            <div class="text-[8px] tracking-[0.4em] uppercase text-slate-400 font-bold" style="text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Edición I · 2026</div>
+            <div class="font-display italic text-2xl text-primary/90" style="text-shadow: 0 2px 6px rgba(212, 175, 55, 0.2); filter: brightness(1.1);">Data Analyst Bootcamp</div>
+            <a href="https://github.com/Anais-RV/DATA-ANALYST" target="_blank" rel="noopener" class="inline-block text-[8px] tracking-[0.3em] uppercase text-slate-500 hover:text-primary/80 transition-colors mt-2" style="text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                Ver repositorio →
+            </a>
+        </div>
+    </footer>
+    
+    <script>
+        // Realistic shooting star animation using Canvas
+        (function() {
+            'use strict';
+            
+            // Respect user's motion preferences
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) return;
+            
+            const canvas = document.getElementById('shooting-star-canvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let activeMeteor = null;
+            let isFirstMeteor = true;
+            // First meteor appears quickly (3-5 seconds), then normal intervals
+            let nextMeteorTime = Date.now() + 3000 + Math.random() * 2000;
+            
+            // Initialize canvas dimensions
+            function resizeCanvas() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Generate random interval between meteors (15-45 seconds)
+            function randomInterval() {
+                return 15000 + Math.random() * 30000;
+            }
+            
+            // Custom easing function for deceleration (ease-out cubic)
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+            
+            // Spawn a new shooting star with random trajectory
+            function spawnShootingStar() {
+                // Random starting position (off-screen, top portion)
+                const startX = Math.random() * width * 0.3; // Left 30% of screen
+                const startY = Math.random() * height * 0.4; // Top 40% of screen
+                
+                // Random angle (generally diagonal, between -25° to -50°)
+                const angle = -25 - Math.random() * 25;
+                const radians = (angle * Math.PI) / 180;
+                
+                // Random speed and distance
+                const distance = 400 + Math.random() * 600;
+                const duration = 1000 + Math.random() * 800; // 1000-1800ms
+                
+                // Calculate end position based on angle and distance
+                const endX = startX + Math.cos(radians) * distance;
+                const endY = startY + Math.sin(radians) * distance;
+                
+                return {
+                    startX,
+                    startY,
+                    endX,
+                    endY,
+                    angle: radians,
+                    duration,
+                    startTime: Date.now(),
+                    maxTailLength: 80 + Math.random() * 40 // 80-120px
+                };
+            }
+            
+            // Draw a single frame of the meteor
+            function drawMeteor(meteor) {
+                const now = Date.now();
+                const elapsed = now - meteor.startTime;
+                const progress = Math.min(elapsed / meteor.duration, 1);
+                
+                // Apply easing to position (ease-out for deceleration effect)
+                const easedProgress = easeOutCubic(progress);
+                
+                // Calculate current head position
+                const headX = meteor.startX + (meteor.endX - meteor.startX) * easedProgress;
+                const headY = meteor.startY + (meteor.endY - meteor.startY) * easedProgress;
+                
+                // Brightness phases:
+                // 0-10%: Quick flash (0 -> 1)
+                // 10-70%: Peak brightness (1)
+                // 70-100%: Fade out (1 -> 0)
+                let brightness;
+                if (progress < 0.1) {
+                    brightness = progress / 0.1;
+                } else if (progress < 0.7) {
+                    brightness = 1;
+                } else {
+                    brightness = 1 - ((progress - 0.7) / 0.3);
+                }
+                
+                // Dynamic tail length (longer at mid-flight, shorter at start/end)
+                let tailLength;
+                if (progress < 0.15) {
+                    // Growing tail at start
+                    tailLength = meteor.maxTailLength * (progress / 0.15);
+                } else if (progress > 0.85) {
+                    // Shrinking tail at end
+                    tailLength = meteor.maxTailLength * ((1 - progress) / 0.15);
+                } else {
+                    // Full tail in middle
+                    tailLength = meteor.maxTailLength;
+                }
+                
+                // Calculate tail start position (lagging behind head)
+                const tailStartX = headX - Math.cos(meteor.angle) * tailLength;
+                const tailStartY = headY - Math.sin(meteor.angle) * tailLength;
+                
+                // Draw tail first (behind head)
+                // Tail uses linear gradient from semi-transparent to fully transparent
+                const tailGradient = ctx.createLinearGradient(
+                    headX, headY,
+                    tailStartX, tailStartY
+                );
+                
+                const tailOpacity = brightness * 0.6;
+                tailGradient.addColorStop(0, `rgba(255, 255, 255, ${tailOpacity})`);
+                tailGradient.addColorStop(0.3, `rgba(255, 245, 200, ${tailOpacity * 0.5})`);
+                tailGradient.addColorStop(0.7, `rgba(200, 220, 255, ${tailOpacity * 0.2})`);
+                tailGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                
+                ctx.strokeStyle = tailGradient;
+                ctx.lineWidth = 2 * brightness;
+                ctx.lineCap = 'round';
+                ctx.beginPath();
+                ctx.moveTo(headX, headY);
+                ctx.lineTo(tailStartX, tailStartY);
+                ctx.stroke();
+                
+                // Draw head (bright core)
+                // Head uses radial gradient for glow effect
+                const headGradient = ctx.createRadialGradient(
+                    headX, headY, 0,
+                    headX, headY, 4 * brightness
+                );
+                
+                const coreOpacity = brightness;
+                headGradient.addColorStop(0, `rgba(255, 255, 255, ${coreOpacity})`);
+                headGradient.addColorStop(0.3, `rgba(255, 250, 230, ${coreOpacity * 0.8})`);
+                headGradient.addColorStop(0.6, `rgba(212, 175, 55, ${coreOpacity * 0.4})`);
+                headGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                
+                ctx.fillStyle = headGradient;
+                ctx.beginPath();
+                ctx.arc(headX, headY, 4 * brightness, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Outer glow for extra brightness
+                if (brightness > 0.5) {
+                    const glowGradient = ctx.createRadialGradient(
+                        headX, headY, 0,
+                        headX, headY, 8 * brightness
+                    );
+                    glowGradient.addColorStop(0, `rgba(255, 255, 255, ${brightness * 0.3})`);
+                    glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    
+                    ctx.fillStyle = glowGradient;
+                    ctx.beginPath();
+                    ctx.arc(headX, headY, 8 * brightness, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Return whether meteor is still active
+                return progress < 1;
+            }
+            
+            // Main animation loop
+            function animate() {
+                // Clear canvas
+                ctx.clearRect(0, 0, width, height);
+                
+                const now = Date.now();
+                
+                // Check if it's time to spawn a new meteor
+                if (!activeMeteor && now >= nextMeteorTime) {
+                    activeMeteor = spawnShootingStar();
+                }
+                
+                // Draw active meteor if exists
+                if (activeMeteor) {
+                    const stillActive = drawMeteor(activeMeteor);
+                    if (!stillActive) {
+                        activeMeteor = null;
+                        // After first meteor, use normal random interval
+                        if (isFirstMeteor) {
+                            isFirstMeteor = false;
+                            nextMeteorTime = now + randomInterval();
+                        } else {
+                            nextMeteorTime = now + randomInterval();
+                        }
+                    }
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Start animation loop
+            animate();
+        })();
+    </script>
+</body>
+</html>
