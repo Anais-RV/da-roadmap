@@ -49,86 +49,98 @@ const modulesData = {
         "id": "da-core",
         "label": "DA Core",
         "subtitle": "Repositorio Central",
-        "url": "https://github.com/ORG/da-core",
-        "description": "Diseño pedagógico completo del bootcamp: visión, cronograma, evaluación y estructura"
+        "url": "https://github.com/Anais-RV/da-core",
+        "description": "Diseño pedagógico completo del bootcamp: visión, cronograma, evaluación y estructura",
+        "isPrivate": true
     },
     "satellites": [
         {
             "id": "da-sat-00-launchpad",
             "label": "Launchpad",
             "subtitle": "Fundamentos para el Despegue",
-            "url": "https://github.com/ORG/da-sat-00-launchpad-fundamentos",
-            "tags": ["preparación", "conceptual", "no-evaluativo"]
+            "url": "https://github.com/Anais-RV/da-sat-00-launchpad-fundamentos",
+            "tags": ["preparación", "conceptual", "no-evaluativo"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-01-atlas",
             "label": "Atlas",
             "subtitle": "Exploración de Datos",
-            "url": "https://github.com/ORG/da-sat-01-atlas-exploracion-datos",
-            "tags": ["excel", "análisis-básico", "primer-proyecto"]
+            "url": "https://github.com/Anais-RV/da-sat-01-atlas-exploracion-datos",
+            "tags": ["excel", "análisis-básico", "primer-proyecto"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-02-kepler",
             "label": "Kepler",
             "subtitle": "Limpieza de Datos",
-            "url": "https://github.com/ORG/da-sat-02-kepler-limpieza-datos",
-            "tags": ["python", "limpieza", "transformación"]
+            "url": "https://github.com/Anais-RV/da-sat-02-kepler-limpieza-datos",
+            "tags": ["python", "limpieza", "transformación"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-03-galileo",
             "label": "Galileo",
             "subtitle": "Visualización",
-            "url": "https://github.com/ORG/da-sat-03-galileo-visualizacion",
-            "tags": ["gráficos", "dashboards", "storytelling"]
+            "url": "https://github.com/Anais-RV/da-sat-03-galileo-visualizacion",
+            "tags": ["gráficos", "dashboards", "storytelling"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-04-newton",
             "label": "Newton",
             "subtitle": "Estadística Descriptiva",
-            "url": "https://github.com/ORG/da-sat-04-newton-estadistica",
-            "tags": ["estadística", "EDA", "análisis"]
+            "url": "https://github.com/Anais-RV/da-sat-04-newton-estadistica",
+            "tags": ["estadística", "EDA", "análisis"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-05-curie",
             "label": "Curie",
             "subtitle": "EDA Avanzado",
-            "url": "https://github.com/ORG/da-sat-05-curie-eda",
-            "tags": ["análisis-avanzado", "patrones", "hipótesis"]
+            "url": "https://github.com/Anais-RV/da-sat-05-curie-eda",
+            "tags": ["análisis-avanzado", "patrones", "hipótesis"],
+            "isPrivate": true
         },
         {
             "id": "da-sat-06-faraday",
             "label": "Faraday",
             "subtitle": "Reporting Automatizado",
-            "url": "https://github.com/ORG/da-sat-06-faraday-reporting",
-            "tags": ["automatización", "informes", "reproducibilidad"]
+            "url": "https://github.com/Anais-RV/da-sat-06-faraday-reporting",
+            "tags": ["automatización", "informes", "reproducibilidad"],
+            "isPrivate": false
         },
         {
             "id": "da-sat-07-darwin",
             "label": "Darwin",
             "subtitle": "Clustering",
-            "url": "https://github.com/ORG/da-sat-07-darwin-clustering",
-            "tags": ["machine-learning", "clustering", "segmentación"]
+            "url": "https://github.com/Anais-RV/da-sat-07-darwin-clustering",
+            "tags": ["machine-learning", "clustering", "segmentación"],
+            "isPrivate": false
         },
         {
             "id": "da-sat-08-turing",
             "label": "Turing",
             "subtitle": "Clasificación",
-            "url": "https://github.com/ORG/da-sat-08-turing-clasificacion",
-            "tags": ["machine-learning", "clasificación", "predicción"]
+            "url": "https://github.com/Anais-RV/da-sat-08-turing-clasificacion",
+            "tags": ["machine-learning", "clasificación", "predicción"],
+            "isPrivate": false
         },
         {
             "id": "da-sat-09-pasteur",
             "label": "Pasteur",
             "subtitle": "Pipelines de ML",
-            "url": "https://github.com/ORG/da-sat-09-pasteur-pipelines",
-            "tags": ["machine-learning", "pipelines", "automatización"]
+            "url": "https://github.com/Anais-RV/da-sat-09-pasteur-pipelines",
+            "tags": ["machine-learning", "pipelines", "automatización"],
+            "isPrivate": false
         },
         {
             "id": "da-sat-10-halley",
             "label": "Halley",
             "subtitle": "Series Temporales",
-            "url": "https://github.com/ORG/da-sat-10-halley-series-temporales",
-            "tags": ["forecasting", "tendencias", "series-temporales"]
+            "url": "https://github.com/Anais-RV/da-sat-10-halley-series-temporales",
+            "tags": ["forecasting", "tendencias", "series-temporales"],
+            "isPrivate": false
         }
     ]
 };
@@ -197,6 +209,7 @@ function createSatelliteNode(satellite, angle, index) {
     // Set data attributes
     node.dataset.id = satellite.id;
     node.dataset.url = satellite.url || '#';
+    node.dataset.isPrivate = satellite.isPrivate || false;
     node.setAttribute('role', 'button');
     node.setAttribute('tabindex', '0');
     node.setAttribute('aria-label', `${satellite.label} - ${satellite.subtitle}`);
@@ -222,6 +235,7 @@ function setupInteractions() {
     const daCore = document.querySelector('.da-core');
     if (daCore && modulesData && modulesData.core) {
         daCore.dataset.url = modulesData.core.url || '#';
+        daCore.dataset.isPrivate = modulesData.core.isPrivate || false;
         daCore.setAttribute('role', 'button');
         daCore.setAttribute('tabindex', '0');
         daCore.setAttribute('aria-label', `${modulesData.core.label} - ${modulesData.core.subtitle}`);
@@ -271,6 +285,13 @@ function repositionSatellites() {
 function handleNodeClick(event) {
     const node = event.currentTarget;
     const url = node.dataset.url;
+    const isPrivate = node.dataset.isPrivate === 'true';
+    
+    if (isPrivate) {
+        // For private repos, show a message instead of navigating
+        alert('🔒 Aún no habilitado\n\nEste satélite aún no está disponible públicamente.');
+        return;
+    }
     
     if (url && url !== '#') {
         window.open(url, '_blank', 'noopener,noreferrer');
