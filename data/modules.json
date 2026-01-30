@@ -27,41 +27,41 @@
     {
       "id": "da-sat-02-kepler",
       "label": "Kepler",
-      "subtitle": "Limpieza de Datos",
+      "subtitle": "Fundamentos de Python",
       "url": "https://github.com/Anais-RV/da-sat-02-kepler-limpieza-datos",
-      "tags": ["python", "limpieza", "transformación"],
+      "tags": ["python-básico", "lógica", "funciones", "estructuras-datos"],
       "isPrivate": true
     },
     {
       "id": "da-sat-03-galileo",
       "label": "Galileo",
-      "subtitle": "Visualización",
+      "subtitle": "Bases de Datos y SQL",
       "url": "https://github.com/Anais-RV/da-sat-03-galileo-visualizacion",
-      "tags": ["gráficos", "dashboards", "storytelling"],
+      "tags": ["sql", "bases-de-datos", "joins", "consultas"],
       "isPrivate": true
     },
     {
       "id": "da-sat-04-newton",
       "label": "Newton",
-      "subtitle": "Estadística Descriptiva",
+      "subtitle": "Estadística y Regresión",
       "url": "https://github.com/Anais-RV/da-sat-04-newton-estadistica",
-      "tags": ["estadística", "EDA", "análisis"],
+      "tags": ["estadística", "regresión", "scikit-learn", "machine-learning"],
       "isPrivate": true
     },
     {
       "id": "da-sat-05-curie",
       "label": "Curie",
-      "subtitle": "EDA Avanzado",
+      "subtitle": "EDA con Pandas",
       "url": "https://github.com/Anais-RV/da-sat-05-curie-eda",
-      "tags": ["análisis-avanzado", "patrones", "hipótesis"],
+      "tags": ["pandas", "eda-avanzado", "limpieza", "análisis"],
       "isPrivate": true
     },
     {
       "id": "da-sat-06-faraday",
       "label": "Faraday",
-      "subtitle": "Reporting Automatizado",
+      "subtitle": "Dashboards y Reporting",
       "url": "https://github.com/Anais-RV/da-sat-06-faraday-reporting",
-      "tags": ["automatización", "informes", "reproducibilidad"],
+      "tags": ["power-bi", "tableau", "dashboards", "visualización"],
       "isPrivate": false
     },
     {
