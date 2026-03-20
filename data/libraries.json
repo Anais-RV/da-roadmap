@@ -1,0 +1,256 @@
+{
+  "focusOrder": [
+    "Manipulacion de datos",
+    "Integracion de datos",
+    "Calculo y estadistica",
+    "Visualizacion",
+    "Entrega y automatizacion",
+    "Machine Learning",
+    "Calidad y productividad",
+    "Deep Learning"
+  ],
+  "focusPalette": {
+    "Manipulacion de datos": "#2dd4bf",
+    "Integracion de datos": "#f97316",
+    "Calculo y estadistica": "#eab308",
+    "Visualizacion": "#818cf8",
+    "Entrega y automatizacion": "#22d3ee",
+    "Machine Learning": "#34d399",
+    "Calidad y productividad": "#c084fc",
+    "Deep Learning": "#fb7185"
+  },
+  "libraries": [
+    {
+      "name": "pandas",
+      "focus": "Manipulacion de datos",
+      "phase": "Curie",
+      "what": "Limpieza, transformacion y agregaciones tabulares.",
+      "hint": "Ejemplo: groupby + agg para resumen de negocio.",
+      "doc": "https://pandas.pydata.org/docs/"
+    },
+    {
+      "name": "pyarrow",
+      "focus": "Manipulacion de datos",
+      "phase": "Extra",
+      "what": "Lectura y escritura eficiente de formatos columnares como Parquet.",
+      "hint": "Muy util cuando los datasets crecen y CSV se queda corto.",
+      "doc": "https://arrow.apache.org/docs/python/"
+    },
+    {
+      "name": "polars",
+      "focus": "Manipulacion de datos",
+      "phase": "Extra",
+      "what": "Alternativa de alto rendimiento para tablas.",
+      "hint": "Pandas cubre el itinerario actual.",
+      "doc": "https://docs.pola.rs/"
+    },
+    {
+      "name": "sqlalchemy",
+      "focus": "Integracion de datos",
+      "phase": "Extra",
+      "what": "Conexion y consultas de bases de datos desde Python.",
+      "hint": "Ideal para pasar de SQL manual a flujos reproducibles.",
+      "doc": "https://docs.sqlalchemy.org/"
+    },
+    {
+      "name": "duckdb",
+      "focus": "Integracion de datos",
+      "phase": "Extra",
+      "what": "Motor SQL embebido para consultar CSV y Parquet sin servidor.",
+      "hint": "Perfecto para analisis rapido local con sintaxis SQL.",
+      "doc": "https://duckdb.org/docs/"
+    },
+    {
+      "name": "requests",
+      "focus": "Integracion de datos",
+      "phase": "Extra",
+      "what": "Consumo de APIs REST para traer datos reales.",
+      "hint": "Base para ingestar JSON y enriquecer analisis.",
+      "doc": "https://requests.readthedocs.io/en/latest/"
+    },
+    {
+      "name": "numpy",
+      "focus": "Calculo y estadistica",
+      "phase": "Newton",
+      "what": "Calculos numericos y operaciones vectorizadas.",
+      "hint": "Ejemplo: medias, desviaciones y arrays.",
+      "doc": "https://numpy.org/doc/"
+    },
+    {
+      "name": "scipy",
+      "focus": "Calculo y estadistica",
+      "phase": "Newton",
+      "what": "Estadistica inferencial y tests de hipotesis.",
+      "hint": "Ejemplo: ttest_ind y p-value con contexto.",
+      "doc": "https://docs.scipy.org/doc/scipy/"
+    },
+    {
+      "name": "statsmodels",
+      "focus": "Calculo y estadistica",
+      "phase": "Halley",
+      "what": "Modelos estadisticos e inferencia con interpretacion robusta.",
+      "hint": "Muy util en regresion y series temporales clasicas.",
+      "doc": "https://www.statsmodels.org/stable/index.html"
+    },
+    {
+      "name": "missingno",
+      "focus": "Calculo y estadistica",
+      "phase": "Extra",
+      "what": "Visualizacion rapida de patrones de valores nulos.",
+      "hint": "Ayuda a explicar calidad de datos en un minuto.",
+      "doc": "https://github.com/ResidentMario/missingno"
+    },
+    {
+      "name": "ydata-profiling",
+      "focus": "Calculo y estadistica",
+      "phase": "Extra",
+      "what": "Perfilado automatico del dataset para acelerar EDA inicial.",
+      "hint": "Muy util como primer barrido, no reemplaza analisis critico.",
+      "doc": "https://docs.profiling.ydata.ai/latest/"
+    },
+    {
+      "name": "matplotlib",
+      "focus": "Visualizacion",
+      "phase": "Newton",
+      "what": "Graficos base para analisis y comparativas.",
+      "hint": "Ejemplo: bar, hist y scatter.",
+      "doc": "https://matplotlib.org/stable/users/index.html"
+    },
+    {
+      "name": "seaborn",
+      "focus": "Visualizacion",
+      "phase": "Newton",
+      "what": "Visualizacion estadistica con menos codigo.",
+      "hint": "Ejemplo: histplot, boxplot, regplot.",
+      "doc": "https://seaborn.pydata.org/"
+    },
+    {
+      "name": "plotly",
+      "focus": "Visualizacion",
+      "phase": "Faraday",
+      "what": "Graficos interactivos para exploracion y reporting.",
+      "hint": "Ideal para dashboards con hover y filtros.",
+      "doc": "https://plotly.com/python/"
+    },
+    {
+      "name": "altair",
+      "focus": "Visualizacion",
+      "phase": "Extra",
+      "what": "Visualizacion declarativa para crear graficos limpios con poco codigo.",
+      "hint": "Muy comoda para prototipos rapidos con enfoque analitico.",
+      "doc": "https://altair-viz.github.io/"
+    },
+    {
+      "name": "bokeh",
+      "focus": "Visualizacion",
+      "phase": "Extra",
+      "what": "Graficos interactivos en navegador con control fino de widgets y layouts.",
+      "hint": "Buena opcion cuando se necesita mas personalizacion interactiva.",
+      "doc": "https://docs.bokeh.org/"
+    },
+    {
+      "name": "openpyxl",
+      "focus": "Entrega y automatizacion",
+      "phase": "Extra",
+      "what": "Puente Python -> Excel/Sheets para reportes sin formulas.",
+      "hint": "Ejemplo: to_excel para salida lista de negocio.",
+      "doc": "https://openpyxl.readthedocs.io/en/stable/"
+    },
+    {
+      "name": "streamlit",
+      "focus": "Entrega y automatizacion",
+      "phase": "Faraday",
+      "what": "Apps de datos para presentar resultados en web.",
+      "hint": "Interfaz simple para mostrar analisis a negocio.",
+      "doc": "https://docs.streamlit.io/"
+    },
+    {
+      "name": "prefect",
+      "focus": "Entrega y automatizacion",
+      "phase": "Extra",
+      "what": "Orquestacion de flujos de datos y tareas programadas.",
+      "hint": "Escala automatizaciones mas alla de scripts sueltos.",
+      "doc": "https://docs.prefect.io/"
+    },
+    {
+      "name": "scikit-learn",
+      "focus": "Machine Learning",
+      "phase": "Darwin-Turing",
+      "what": "Modelos de ML para regresion, clustering y clasificacion.",
+      "hint": "Ejemplo: train_test_split + metricas.",
+      "doc": "https://scikit-learn.org/stable/"
+    },
+    {
+      "name": "prophet",
+      "focus": "Machine Learning",
+      "phase": "Halley",
+      "what": "Forecasting de series temporales con tendencia y estacionalidad.",
+      "hint": "Puente practico para prediccion de demanda/ventas.",
+      "doc": "https://facebook.github.io/prophet/"
+    },
+    {
+      "name": "joblib",
+      "focus": "Machine Learning",
+      "phase": "Pasteur",
+      "what": "Persistencia de modelos y pipelines para reutilizacion.",
+      "hint": "Guardar y cargar modelos entrenados de forma simple.",
+      "doc": "https://joblib.readthedocs.io/en/stable/"
+    },
+    {
+      "name": "mlflow",
+      "focus": "Machine Learning",
+      "phase": "Extra",
+      "what": "Tracking de experimentos y versionado de modelos ML.",
+      "hint": "Aporta trazabilidad cuando hay muchos experimentos.",
+      "doc": "https://mlflow.org/docs/latest/index.html"
+    },
+    {
+      "name": "xgboost",
+      "focus": "Machine Learning",
+      "phase": "Extra",
+      "what": "Boosting potente para casos avanzados.",
+      "hint": "No prioritario para mitad de bootcamp.",
+      "doc": "https://xgboost.readthedocs.io/en/stable/"
+    },
+    {
+      "name": "jupyter",
+      "focus": "Calidad y productividad",
+      "phase": "Kepler",
+      "what": "Entorno de exploracion, explicacion y presentacion reproducible.",
+      "hint": "Combina codigo, narrativa y resultados en un solo lugar.",
+      "doc": "https://jupyter.org/"
+    },
+    {
+      "name": "pytest",
+      "focus": "Calidad y productividad",
+      "phase": "Extra",
+      "what": "Testing de funciones para asegurar calidad y evitar regresiones.",
+      "hint": "Clave para automatizaciones estables en proyectos reales.",
+      "doc": "https://docs.pytest.org/"
+    },
+    {
+      "name": "sqlfluff",
+      "focus": "Calidad y productividad",
+      "phase": "Extra",
+      "what": "Linter SQL para mantener consultas consistentes y legibles.",
+      "hint": "Muy util cuando el equipo colabora en SQL compartido.",
+      "doc": "https://docs.sqlfluff.com/"
+    },
+    {
+      "name": "great_expectations",
+      "focus": "Calidad y productividad",
+      "phase": "Extra",
+      "what": "Validacion declarativa de calidad de datos en pipelines.",
+      "hint": "Convierte reglas de negocio en tests de datos reutilizables.",
+      "doc": "https://docs.greatexpectations.io/"
+    },
+    {
+      "name": "tensorflow",
+      "focus": "Deep Learning",
+      "phase": "Extra",
+      "what": "Framework de deep learning para redes neuronales.",
+      "hint": "Fuera de foco DA junior en esta fase.",
+      "doc": "https://www.tensorflow.org/api_docs"
+    }
+  ]
+}

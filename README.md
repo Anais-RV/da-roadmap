@@ -44,3 +44,19 @@ Edición I · 2026
 python -m http.server 8000
 # http://localhost:8000
 ```
+
+---
+
+## 📚 Library Radar (mantenimiento)
+
+La pagina `libraries.html` carga sus tarjetas desde:
+
+- `data/libraries.json`
+
+Para actualizar contenido sin tocar HTML:
+
+1. Edita `libraries` para anadir/quitar tarjetas.
+2. Si creas un foco nuevo, anadelo tambien en `focusOrder`.
+3. Asigna su color en `focusPalette` para mantener la identidad visual.
+
+Regla practica: cada tarjeta debe incluir `name`, `focus`, `phase`, `what`, `hint` y `doc`.

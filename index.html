@@ -480,11 +480,70 @@
         .mobile-layout {
             display: none;
         }
+
+        /* Quick access to library cards */
+        .libraries-link-wrap {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            z-index: 90;
+        }
+
+        .libraries-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.9), rgba(30, 41, 59, 0.7));
+            color: rgba(241, 245, 249, 0.92);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            backdrop-filter: blur(6px);
+            transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+            box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+        }
+
+        .libraries-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(212, 175, 55, 0.75);
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.28);
+        }
+
+        .libraries-link .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 1) 0%, rgba(212, 175, 55, 0.55) 70%, transparent 100%);
+        }
+
+        @media (max-width: 767px) {
+            .libraries-link-wrap {
+                top: 0.85rem;
+                right: 0.85rem;
+            }
+
+            .libraries-link {
+                font-size: 0.62rem;
+                padding: 0.45rem 0.7rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans min-h-screen">
     <div class="stardust-overlay"></div>
     <canvas id="shooting-star-canvas"></canvas>
+
+    <div class="libraries-link-wrap">
+        <a class="libraries-link" href="libraries.html" aria-label="Abrir tarjetas de librerias">
+            <span class="dot" aria-hidden="true"></span>
+            Library Cards
+        </a>
+    </div>
     
     <header class="relative z-[70] pt-10 px-12 text-center pointer-events-none">
         <h1 class="font-display italic text-5xl text-slate-50 tracking-tight mb-3">El Cosmos del Data Analyst</h1>

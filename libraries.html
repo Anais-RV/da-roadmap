@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Cards | Data Analyst Bootcamp</title>
+    <meta name="description" content="Tarjetas de librerias para analisis de datos categorizadas por foco tematico.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        :root {
+            --primary-gold: #d4af37;
+            --bg: #03011a;
+            --panel: rgba(18, 12, 8, 0.84);
+            --panel-2: rgba(24, 16, 10, 0.9);
+            --line: rgba(212, 175, 55, 0.22);
+            --line-strong: rgba(212, 175, 55, 0.46);
+            --text: #e8ecf3;
+            --muted: #9ca5b6;
+            --ok: #56d36a;
+            --soon: #f3b352;
+            --park: #7f8aa4;
+            --shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes twinkle-slow {
+            0%, 100% { opacity: 0.28; }
+            50% { opacity: 0.65; }
+        }
+
+        @keyframes twinkle-fast {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.9; }
+        }
+
+        .stardust-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .stardust-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(0.7px 0.7px at 8% 14%, rgba(220, 230, 255, 0.85) 100%, transparent),
+                radial-gradient(0.7px 0.7px at 22% 40%, #fff 100%, transparent),
+                radial-gradient(0.7px 0.7px at 49% 57%, rgba(255, 248, 235, 0.95) 100%, transparent),
+                radial-gradient(0.7px 0.7px at 81% 28%, rgba(190, 215, 255, 0.85) 100%, transparent),
+                radial-gradient(0.7px 0.7px at 64% 74%, #fff 100%, transparent),
+                radial-gradient(0.7px 0.7px at 34% 88%, rgba(255, 239, 213, 0.9) 100%, transparent);
+            background-size: 330px 330px, 360px 360px, 290px 290px, 320px 320px, 300px 300px, 340px 340px;
+            opacity: 0.45;
+            animation: twinkle-slow 8s ease-in-out infinite;
+        }
+
+        .stardust-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(1200px 520px at 8% -12%, rgba(212, 175, 55, 0.16), transparent 60%),
+                radial-gradient(980px 620px at 92% 110%, rgba(145, 82, 36, 0.22), transparent 58%),
+                radial-gradient(1.1px 1.1px at 18% 18%, rgba(255,255,255,0.88) 100%, transparent),
+                radial-gradient(1px 1px at 46% 41%, rgba(200,220,255,0.85) 100%, transparent),
+                radial-gradient(1px 1px at 75% 63%, rgba(255,246,225,0.85) 100%, transparent),
+                radial-gradient(1px 1px at 27% 76%, rgba(255,255,255,0.9) 100%, transparent);
+            background-size: auto, auto, 420px 420px, 390px 390px, 440px 440px, 370px 370px;
+            animation: twinkle-fast 5.8s ease-in-out infinite;
+        }
+
+        #shooting-star-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 5;
+            width: min(1240px, 92vw);
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.46rem 0.75rem;
+            color: #f4f6fb;
+            text-decoration: none;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(12, 8, 20, 0.7);
+            transition: 180ms ease;
+        }
+
+        .back-link:hover {
+            border-color: var(--line-strong);
+            transform: translateY(-1px);
+        }
+
+        .badge {
+            font-size: 0.66rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(212, 175, 55, 0.9);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 0.28rem 0.62rem;
+            white-space: nowrap;
+            background: rgba(9, 6, 16, 0.65);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            margin: 0.5rem 0 0.45rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #faf5e8;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 75ch;
+            font-size: 0.96rem;
+        }
+
+        .filters {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .filters + .filters {
+            margin-top: 0.2rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .chip {
+            border: 1px solid var(--line);
+            color: #ecf0f6;
+            background: rgba(10, 8, 16, 0.72);
+            border-radius: 999px;
+            padding: 0.38rem 0.72rem;
+            font-size: 0.74rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 170ms ease;
+        }
+
+        .chip:hover,
+        .chip.active {
+            border-color: var(--line-strong);
+            color: #fff7dd;
+            background: rgba(31, 20, 10, 0.92);
+            box-shadow: 0 0 16px rgba(212, 175, 55, 0.22);
+        }
+
+        .chip.focus-chip.active {
+            border-color: color-mix(in srgb, var(--chip-color, #d4af37) 70%, transparent);
+            background: linear-gradient(140deg, color-mix(in srgb, var(--chip-color, #d4af37) 24%, rgba(31, 20, 10, 0.92) 76%), rgba(31, 20, 10, 0.96));
+            box-shadow: 0 0 18px color-mix(in srgb, var(--chip-color, #d4af37) 35%, transparent);
+            color: #fff8e6;
+        }
+
+        .focus-section {
+            margin-bottom: 1.3rem;
+            border: 1px solid color-mix(in srgb, var(--focus-color, rgba(212, 175, 55, 0.24)) 45%, transparent);
+            border-radius: 14px;
+            padding: 0.85rem;
+            background: rgba(8, 6, 13, 0.5);
+            backdrop-filter: blur(2px);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+        }
+
+        .focus-title {
+            margin: 0 0 0.7rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.34rem;
+            color: color-mix(in srgb, var(--focus-color, #f3dfab) 82%, #fff 18%);
+            font-style: italic;
+            border-left: 2px solid color-mix(in srgb, var(--focus-color, rgba(212, 175, 55, 0.7)) 74%, transparent);
+            padding-left: 0.6rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.85rem;
+            align-items: stretch;
+        }
+
+        .card {
+            min-height: 290px;
+            perspective: 1100px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 290px;
+            transform-style: preserve-3d;
+            transition: transform 380ms ease;
+        }
+
+        .card.is-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            inset: 0;
+            border: 1px solid color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.2)) 42%, transparent);
+            border-radius: 14px;
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.1)) 11%, transparent) 0%, transparent 48%),
+                linear-gradient(155deg, var(--panel), var(--panel-2));
+            box-shadow: var(--shadow);
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 180ms ease;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .card:hover .card-face {
+            border-color: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.5)) 60%, transparent);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.14)) 14%, transparent) 0%, transparent 52%),
+                linear-gradient(155deg, rgba(16, 12, 26, 0.92), rgba(18, 12, 8, 0.92));
+        }
+
+        .back-title {
+            margin: 0 0 0.55rem;
+            font-size: 0.86rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--focus-color, #f8d986) 72%, #fdeec5 28%);
+            font-weight: 700;
+        }
+
+        .fn-list {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.38rem;
+            color: #e8ecf6;
+            font-size: 0.83rem;
+            line-height: 1.45;
+            max-height: 150px;
+            overflow: auto;
+            padding-right: 0.2rem;
+        }
+
+        .card.show-all-fn .fn-list {
+            max-height: none;
+        }
+
+        .fn-list li {
+            border: 1px solid color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.34)) 45%, transparent);
+            border-radius: 999px;
+            padding: 0.16rem 0.5rem;
+            background: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.1)) 16%, rgba(20, 12, 20, 0.8) 84%);
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fn-list code {
+            color: #fde9bb;
+            font-size: 0.8rem;
+        }
+
+        .fn-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .fn-list::-webkit-scrollbar-thumb {
+            background: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.45)) 50%, transparent);
+            border-radius: 999px;
+        }
+
+        .flip-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            border: 1px solid color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.34)) 62%, transparent);
+            color: #fef4dc;
+            background: rgba(18, 12, 8, 0.7);
+            border-radius: 999px;
+            padding: 0.3rem 0.62rem;
+            font-size: 0.69rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .flip-btn:hover {
+            background: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.2)) 26%, rgba(18, 12, 8, 0.7) 74%);
+        }
+
+        .more-fn-btn {
+            margin-top: 0.45rem;
+            align-self: flex-start;
+            border: 1px dashed color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.32)) 62%, transparent);
+            color: #f3e5bb;
+            background: rgba(14, 10, 9, 0.55);
+            border-radius: 999px;
+            padding: 0.2rem 0.52rem;
+            font-size: 0.66rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .more-fn-btn:hover {
+            background: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.15)) 28%, rgba(14, 10, 9, 0.55) 72%);
+        }
+
+        @media (max-width: 980px) {
+            .fn-list {
+                max-height: 180px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .card,
+            .card-inner {
+                min-height: 270px;
+            }
+
+            .card-face {
+                padding: 0.75rem;
+            }
+
+            .lib-name {
+                font-size: 0.96rem;
+            }
+
+            .what {
+                font-size: 0.86rem;
+                line-height: 1.4;
+            }
+
+            .mini {
+                font-size: 0.76rem;
+            }
+
+            .fn-list {
+                max-height: 120px;
+                font-size: 0.78rem;
+                gap: 0.32rem;
+            }
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lib-name {
+            margin: 0;
+            font-size: 1.02rem;
+            font-weight: 650;
+            color: #fbf7ee;
+        }
+
+        .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.28rem;
+            width: fit-content;
+            padding: 0.18rem 0.52rem 0.18rem 0.46rem;
+            border-radius: 999px;
+            border: 1px solid color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.45)) 55%, transparent);
+            background: color-mix(in srgb, var(--focus-color, rgba(212,175,55,0.1)) 16%, rgba(14, 10, 9, 0.8) 84%);
+            color: color-mix(in srgb, var(--focus-color, #f8d986) 80%, #fdeec5 20%);
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
+        }
+
+        .meta::before {
+            content: '';
+            width: 2px;
+            height: 0.75rem;
+            border-radius: 99px;
+            background: color-mix(in srgb, var(--focus-color, #f8d986) 75%, transparent);
+            box-shadow: 0 0 8px color-mix(in srgb, var(--focus-color, #f8d986) 35%, transparent);
+        }
+
+        .what {
+            margin: 0 0 0.5rem;
+            color: #e4e8f1;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .mini {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .doc {
+            margin-top: auto;
+            padding-top: 0.64rem;
+            font-size: 0.76rem;
+        }
+
+        .doc a {
+            color: #f7dc95;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.55);
+        }
+
+        .doc a:hover { color: #fff5cf; }
+
+        .empty {
+            border: 1px dashed rgba(212, 175, 55, 0.22);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        #content {
+            margin-top: 0.4rem;
+        }
+
+        @media (max-width: 760px) {
+            .wrap { padding-top: 1.2rem; }
+            .top { flex-direction: column-reverse; align-items: flex-start; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stardust-overlay"></div>
+    <canvas id="shooting-star-canvas"></canvas>
+
+    <div class="wrap">
+        <div class="top">
+            <a class="back-link" href="index.html" aria-label="Volver al Cosmos">
+                <span aria-hidden="true">&#8592;</span>
+                Volver al Cosmos
+            </a>
+            <span class="badge">Library Radar</span>
+        </div>
+
+        <h1>Constelacion de Librerias del Bootcamp</h1>
+        <p class="subtitle">
+            Mapa de apoyo del Cosmos: cada tarjeta representa una herramienta en orbita de los satelites formativos para decidir que usar en cada fase del viaje.
+        </p>
+
+        <div class="filters" id="focusFilters"></div>
+        <section id="content"></section>
+    </div>
+
+    <script>
+        const fallbackData = {
+            focusOrder: [
+                'Manipulacion de datos',
+                'Integracion de datos',
+                'Calculo y estadistica',
+                'Visualizacion',
+                'Entrega y automatizacion',
+                'Machine Learning',
+                'Calidad y productividad',
+                'Deep Learning'
+            ],
+            focusPalette: {
+                'Manipulacion de datos': '#2dd4bf',
+                'Integracion de datos': '#f97316',
+                'Calculo y estadistica': '#eab308',
+                'Visualizacion': '#818cf8',
+                'Entrega y automatizacion': '#22d3ee',
+                'Machine Learning': '#34d399',
+                'Calidad y productividad': '#c084fc',
+                'Deep Learning': '#fb7185'
+            },
+            libraries: [
+                {
+                    name: 'pandas',
+                    focus: 'Manipulacion de datos',
+                    phase: 'Semanas 7-8',
+                    what: 'Limpieza, transformacion y agregaciones tabulares.',
+                    hint: 'Ejemplo: groupby + agg para resumen de negocio.',
+                    doc: 'https://pandas.pydata.org/docs/'
+                },
+                {
+                    name: 'numpy',
+                    focus: 'Calculo y estadistica',
+                    phase: 'Semanas 7-8',
+                    what: 'Calculos numericos y operaciones vectorizadas.',
+                    hint: 'Ejemplo: medias, desviaciones y arrays.',
+                    doc: 'https://numpy.org/doc/'
+                }
+            ]
+        };
+
+        let libraries = [];
+        let focusOrder = [];
+        let focusPalette = {};
+        let focusFilters = [];
+
+        let activeFocus = 'all';
+
+        const focusEl = document.getElementById('focusFilters');
+        const contentEl = document.getElementById('content');
+
+        function buildFocusFilters() {
+            focusFilters = [
+                { id: 'all', label: 'Ver todo' },
+                ...focusOrder.map(f => ({ id: f, label: f }))
+            ];
+        }
+
+        async function loadLibraryData() {
+            try {
+                const response = await fetch('./data/libraries.json', { cache: 'no-cache' });
+                if (!response.ok) {
+                    throw new Error(`No se pudo cargar libraries.json: ${response.status}`);
+                }
+                const data = await response.json();
+                libraries = data.libraries || [];
+                focusOrder = data.focusOrder || [];
+                focusPalette = data.focusPalette || {};
+            } catch (error) {
+                console.warn('Usando fallback local para librerias:', error);
+                libraries = fallbackData.libraries;
+                focusOrder = fallbackData.focusOrder;
+                focusPalette = fallbackData.focusPalette;
+            }
+
+            buildFocusFilters();
+            refresh();
+        }
+
+        function renderFilterRow(target, defs, active, onClick, isFocus = false) {
+            target.innerHTML = '';
+            defs.forEach(def => {
+                const btn = document.createElement('button');
+                btn.className = `chip ${isFocus ? 'focus-chip' : ''} ${active === def.id ? 'active' : ''}`.trim();
+                btn.type = 'button';
+                btn.textContent = def.label;
+                if (isFocus && def.id !== 'all') {
+                    btn.style.setProperty('--chip-color', focusPalette[def.id] || '#d4af37');
+                }
+                btn.addEventListener('click', () => onClick(def.id));
+                target.appendChild(btn);
+            });
+        }
+
+        const functionCatalog = {
+            pandas: ['read_csv()', 'read_excel()', 'groupby()', 'merge()', 'pivot_table()', 'assign()', 'query()', 'to_excel()'],
+            pyarrow: ['Table.from_pandas()', 'parquet.read_table()', 'parquet.write_table()'],
+            polars: ['read_csv()', 'select()', 'group_by()', 'join()', 'write_parquet()'],
+            sqlalchemy: ['create_engine()', 'text()', 'read_sql_query()'],
+            duckdb: ['connect()', 'execute()', 'query_df()'],
+            requests: ['get()', 'post()', 'response.json()'],
+            numpy: ['array()', 'mean()', 'median()', 'std()', 'percentile()', 'where()', 'select()', 'linalg.inv()'],
+            scipy: ['stats.ttest_ind()', 'stats.pearsonr()', 'stats.chi2_contingency()', 'stats.f_oneway()'],
+            statsmodels: ['ols()', 'add_constant()', 'seasonal_decompose()'],
+            missingno: ['matrix()', 'bar()', 'heatmap()'],
+            'ydata-profiling': ['ProfileReport()', 'to_file()'],
+            matplotlib: ['plot()', 'bar()', 'hist()', 'scatter()', 'subplots()', 'tight_layout()', 'savefig()', 'show()'],
+            seaborn: ['histplot()', 'boxplot()', 'regplot()', 'heatmap()', 'pairplot()', 'catplot()'],
+            plotly: ['px.bar()', 'px.scatter()', 'px.line()', 'go.Figure()', 'update_layout()', 'update_traces()'],
+            altair: ['Chart()', 'mark_bar()', 'mark_line()', 'encode()', 'interactive()'],
+            bokeh: ['figure()', 'vbar()', 'line()', 'circle()', 'show()'],
+            openpyxl: ['load_workbook()', 'Workbook()', 'cell()', 'save()'],
+            streamlit: ['st.title()', 'st.dataframe()', 'st.selectbox()', 'st.plotly_chart()'],
+            prefect: ['@flow', '@task', 'serve()'],
+            'scikit-learn': ['train_test_split()', 'fit()', 'predict()', 'Pipeline()', 'GridSearchCV()', 'classification_report()'],
+            prophet: ['Prophet()', 'fit()', 'make_future_dataframe()', 'predict()'],
+            joblib: ['dump()', 'load()'],
+            mlflow: ['start_run()', 'log_metric()', 'log_param()'],
+            xgboost: ['XGBClassifier()', 'fit()', 'predict()'],
+            jupyter: ['display()', '%%time', 'Run All'],
+            pytest: ['@pytest.fixture', 'assert', 'pytest.mark.parametrize'],
+            sqlfluff: ['sqlfluff lint', 'sqlfluff fix'],
+            great_expectations: ['expect_column_values_to_not_be_null()', 'validate()'],
+            tensorflow: ['keras.Sequential()', 'fit()', 'predict()']
+        };
+
+        function getInterestingFunctions(lib) {
+            return lib.functions || functionCatalog[lib.name] || ['Funciones clave en documentacion oficial'];
+        }
+
+        function cardTemplate(lib) {
+            const color = focusPalette[lib.focus] || '#d4af37';
+            const functions = getInterestingFunctions(lib);
+            const fnItems = getInterestingFunctions(lib)
+                .map(fn => `<li><code>${fn}</code></li>`)
+                .join('');
+            const showMoreBtn = functions.length > 8
+                ? '<button class="more-fn-btn" type="button" data-fn-toggle="open">Ver todas</button>'
+                : '';
+            return `
+                <article class="card" aria-label="Tarjeta ${lib.name}" style="--focus-color: ${color};">
+                    <div class="card-inner">
+                        <section class="card-face card-front">
+                            <div class="card-top">
+                                <h3 class="lib-name">${lib.name}</h3>
+                            </div>
+                            <div class="meta">${lib.phase}</div>
+                            <p class="what">${lib.what}</p>
+                            <p class="mini">${lib.hint}</p>
+                            <p class="doc">Doc: <a href="${lib.doc}" target="_blank" rel="noopener">${lib.doc.replace('https://', '')}</a></p>
+                            <button class="flip-btn" type="button" data-flip="open">Ver algunas funciones</button>
+                        </section>
+                        <section class="card-face card-back" aria-label="Funciones de ${lib.name}">
+                            <h4 class="back-title">Funciones interesantes</h4>
+                            <ul class="fn-list">${fnItems}</ul>
+                            ${showMoreBtn}
+                            <button class="flip-btn" type="button" data-flip="close">Volver</button>
+                        </section>
+                    </div>
+                </article>
+            `;
+        }
+
+        function getVisibleLibraries() {
+            return libraries.filter(lib => {
+                return activeFocus === 'all' || lib.focus === activeFocus;
+            });
+        }
+
+        function renderSections() {
+            const visible = getVisibleLibraries();
+            const groups = {};
+
+            focusOrder.forEach(f => { groups[f] = []; });
+            visible.forEach(lib => { groups[lib.focus].push(lib); });
+
+            const sections = focusOrder
+                .filter(focus => groups[focus].length > 0)
+                .map(focus => {
+                    const cards = groups[focus].map(cardTemplate).join('');
+                    const color = focusPalette[focus] || '#d4af37';
+                    return `
+                        <section class="focus-section" style="--focus-color: ${color};">
+                            <h2 class="focus-title">${focus}</h2>
+                            <div class="cards">${cards}</div>
+                        </section>
+                    `;
+                });
+
+            if (sections.length === 0) {
+                contentEl.innerHTML = '<div class="empty">No hay librerias para esta combinacion de filtros.</div>';
+                return;
+            }
+
+            contentEl.innerHTML = sections.join('');
+        }
+
+        function refresh() {
+            renderFilterRow(focusEl, focusFilters, activeFocus, id => { activeFocus = id; refresh(); }, true);
+            renderSections();
+        }
+
+        contentEl.addEventListener('click', event => {
+            const fnToggle = event.target.closest('[data-fn-toggle]');
+            if (fnToggle) {
+                const card = fnToggle.closest('.card');
+                if (!card) {
+                    return;
+                }
+                const opening = fnToggle.dataset.fnToggle === 'open';
+                card.classList.toggle('show-all-fn', opening);
+                fnToggle.dataset.fnToggle = opening ? 'close' : 'open';
+                fnToggle.textContent = opening ? 'Ver menos' : 'Ver todas';
+                return;
+            }
+
+            const button = event.target.closest('[data-flip]');
+            if (!button) {
+                return;
+            }
+            const card = button.closest('.card');
+            if (!card) {
+                return;
+            }
+            if (button.dataset.flip === 'open') {
+                card.classList.add('is-flipped');
+            } else {
+                card.classList.remove('is-flipped');
+                card.classList.remove('show-all-fn');
+                const fnBtn = card.querySelector('[data-fn-toggle]');
+                if (fnBtn) {
+                    fnBtn.dataset.fnToggle = 'open';
+                    fnBtn.textContent = 'Ver todas';
+                }
+            }
+        });
+
+        // Minimal shooting stars to keep cosmos mood from main landing
+        (function initShootingStars() {
+            const canvas = document.getElementById('shooting-star-canvas');
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            window.addEventListener('resize', () => {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+
+            let nextAt = Date.now() + 2400;
+            let meteor = null;
+
+            function spawn() {
+                const startX = Math.random() * width * 0.75;
+                const startY = Math.random() * height * 0.4;
+                const len = 120 + Math.random() * 100;
+                return {
+                    startX,
+                    startY,
+                    endX: startX + len,
+                    endY: startY + len * 0.45,
+                    start: Date.now(),
+                    duration: 900 + Math.random() * 700
+                };
+            }
+
+            function draw(m) {
+                const t = (Date.now() - m.start) / m.duration;
+                const p = Math.min(1, t);
+                const x = m.startX + (m.endX - m.startX) * p;
+                const y = m.startY + (m.endY - m.startY) * p;
+                const trail = 85;
+
+                const grad = ctx.createLinearGradient(x, y, x - trail, y - trail * 0.45);
+                grad.addColorStop(0, 'rgba(255,255,255,0.9)');
+                grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x - trail, y - trail * 0.45);
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(255,245,220,0.95)';
+                ctx.beginPath();
+                ctx.arc(x, y, 2.2, 0, Math.PI * 2);
+                ctx.fill();
+
+                return p < 1;
+            }
+
+            function loop() {
+                ctx.clearRect(0, 0, width, height);
+                const now = Date.now();
+
+                if (!meteor && now >= nextAt) {
+                    meteor = spawn();
+                }
+
+                if (meteor) {
+                    const alive = draw(meteor);
+                    if (!alive) {
+                        meteor = null;
+                        nextAt = now + 2600 + Math.random() * 4600;
+                    }
+                }
+
+                requestAnimationFrame(loop);
+            }
+
+            loop();
+        })();
+
+        loadLibraryData();
+    </script>
+</body>
+</html>
